@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="assets/jq/jquery-3.2.1.js"></script>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <title>Exercice 4</title>
+  </head>
+  <body>
+    <form class="releveNote"  action="traitement.php" method="get">
+      <label for="nom">Nom : </label><input type="text" name="nom" id="nom" /><br />
+      <label for="prenom">Prénom : </label><input type="text" name="prenom" id="prenom" /><br />
+      <label for="dateNaissance">Date de naissance : </label><input type="date" name="dateNaissance" id="dateNaissance" /><br />
+      <label for="lieuNaissance">Lieu de naissance : </label><input type="text" name="lieuNaissance" id="lieuNaissance" /><br />
+      <label for="societe">Société : </label><input type="text" name="societe" id="societe" /><br />
+      <label for="emploi">Emploi : </label><input type="text" name="emploi" id="emploi" /><br />
+      <button type="button" name="button">Présentation</button>
+      <textarea name="name" rows="8" cols="80"></textarea>
+    </form>
+    <script>
+    var regex = /^[a-zA-Z\-çéè]+$/;
+    $('button').click(function(){
+        var dateNaissance = $('#dateNaissance').val();
+        var nom = $('#nom').val();
+        var prenom = $('#prenom').val();
+        var lieuNaissance = $('#lieuNaissance').val();
+        var societe = $('#societe').val();
+        var emploi = $('#emploi').val();
+        if (regex.test(nom) == true && regex.test(prenom) == true && regex.test(lieuNaissance) == true && regex.test(societe) == true && regex.test(emploi) == true) {
+          $('textarea').text(prenom + ' ' + nom + ', né le ' + dateNaissance + ' à ' + lieuNaissance + ', actuellement ' + emploi + ' à ' + societe);
+        } else {
+          $('textarea').text('La saisie de vos champs contient des caractères incorrects');
+        }
+    });
+    </script>
+  </body>
+</html>
